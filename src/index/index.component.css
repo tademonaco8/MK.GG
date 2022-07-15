@@ -1,0 +1,19 @@
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.busqueda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.busqueda form p {
+    text-align: center;
+    font-weight: bold;
+}
+
+.busqueda input {
+    margin: 5px;
+}

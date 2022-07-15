@@ -1,0 +1,17 @@
+<h1>MONAK.GG</h1>
+<hr>
+
+<div class="busqueda">
+    <form (ngSubmit)="agregar()">
+        <p>Ingrese su nombre de invocador</p>
+        <input type="text" placeholder="Nombre" [(ngModel)]="busqueda.nombreInv" name="nombreInv">
+        <select name="region" [(ngModel)]="busqueda.region">
+            <option value="la1">LAN</option>
+            <option value="la2">LAS</option>
+            <option value="na">NA</option>
+            <option value="euw">EUW</option>
+            <option value="eue">EUE</option>    
+        </select>
+        <input type="submit">
+    </form>
+</div>
