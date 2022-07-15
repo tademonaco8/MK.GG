@@ -2,7 +2,7 @@
 <hr>
 
 <div class="busqueda">
-    <form (ngSubmit)="agregar()">
+    <form (ngSubmit)="buscarInv($event)">
         <p>Ingrese su nombre de invocador</p>
         <input type="text" placeholder="Nombre" [(ngModel)]="busqueda.nombreInv" name="nombreInv">
         <select name="region" [(ngModel)]="busqueda.region">
@@ -12,6 +12,16 @@
             <option value="euw">EUW</option>
             <option value="eue">EUE</option>    
         </select>
+        <label> Save<input type="checkbox" [value]="busqueda.fav"></label>
         <input type="submit">
     </form>
+
+</div>
+<div>
+    <h2>Invocadores favoritos</h2>
+    <hr>
+    <ul *ngFor="let fav of favoritos">
+        <li>{{fav.nombreInv}}-{{fav.region.toUpperCase()}}</li>
+        <button (click)="copiarDatos(fav)">Seleccionar</button>
+    </ul>
 </div>
