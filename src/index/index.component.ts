@@ -36,7 +36,7 @@ export class IndexComponente {
     partidas: Partidas[] = [];
     busqueda: Busqueda = {
         nombreInv: '',
-        region: '',
+        region: 'la2',
         fav: false
     }
 
