@@ -15,13 +15,23 @@
         <label> Save<input type="checkbox" [value]="busqueda.fav"></label>
         <input type="submit">
     </form>
-
+    <span id="messages"></span>
 </div>
-<div>
+<div id="InvFav">
     <h2>Invocadores favoritos</h2>
     <hr>
     <ul *ngFor="let fav of favoritos">
         <li>{{fav.nombreInv}}-{{fav.region.toUpperCase()}}</li>
         <button (click)="copiarDatos(fav)">Seleccionar</button>
     </ul>
+    <hr>
+</div>
+<div id="Partidas">
+    <h2>Perfil</h2>
+    <h3>{{nombreInv}}</h3>
+    <h4>Partidas:</h4>
+    <ul *ngFor="let match of partidasHistorial">
+        <li>{{match}}</li>
+    </ul>
+    <hr>
 </div>
