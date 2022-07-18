@@ -17,7 +17,6 @@ interface Favs {
     nombreInv: string;
     region: string;
 }
-
 interface Partidas {
     IdPartida : string;
 
@@ -72,6 +71,7 @@ export class IndexComponente {
             region : '',
             fav : false
         };
+
     }
 
     get nombreInv() {
@@ -81,15 +81,6 @@ export class IndexComponente {
     get partidasHistorial(){
         return [...this.RGService.matches]
     }
-
-    // partidasBuscadas(){
-    //     console.log(this.RGService.buscarPartidas());
-    //     this.RGService.matches.forEach(match => {
-    //         console.log(match);
-    //     });
-    //     console.log(this.RGService.matches)
-    // }
-
 
     log(event: any) {
         let checked = event.target.checked;
@@ -102,8 +93,6 @@ export class IndexComponente {
             region : fav.region,
             fav : false
         }
-        console.log(fav)
-
     }
 
     agregarInvocadorFav() {
