@@ -6,7 +6,7 @@ import { IndexComponente } from '../index.component';
 })
 
 export class RGService {
-    private apiKey : string = 'RGAPI-23f13ac0-30a3-4374-ba8a-c3c69a114763';
+    private apiKey : string = 'RGAPI-4eb3779c-7cfc-4497-b9f1-2d77f30e492d';
     private _busquedas: string [] = [];
 
     get busquedas(){
@@ -19,6 +19,7 @@ export class RGService {
     public accountID : string = '';
     public id : string = '';
     public matches: string [] = [];
+    
 
     buscarInvocador ( query: string ){
         query = query.trim().toLocaleLowerCase();
@@ -65,11 +66,25 @@ export class RGService {
             fetch (`https://americas.api.riotgames.com/lol/match/v5/matches/${matchID}?api_key=${this.apiKey}`)
             .then(resp => {
                 resp.json().then(datos => {
+                    const team1: any [] = [];
+                    const team1Champs: any [] = [];
+                    const team2: any [] = [];
+                    const team2Champs: any [] = [];   
                     for (let i = 0; i < 10; i++) {
-                        const PuuID = datos.metadata.participants[i];
-                        this.buscarNombrePuuID(PuuID);
+                        // console.log(datos.info.participants[i]);
+                        if (datos.info.participants[i].teamId === 100){
+                            team1.push(datos.info.participants[i].summonerName);
+                            team1Champs.push(datos.info.participants[i].championName);
+                        } else if (datos.info.participants[i].teamId === 200){
+                            team2.push(datos.info.participants[i].summonerName);
+                            team2Champs.push(datos.info.participants[i].championName);
+                        }
+                        
                     }
-                    // console.log(datos.metadata.participants);
+                    console.log(team1);
+                    console.log(team1Champs)
+                    console.log(team2);
+                    console.log(team2Champs);
                 })
         })
     }
