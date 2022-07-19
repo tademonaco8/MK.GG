@@ -19,7 +19,10 @@ export class RGService {
     public accountID : string = '';
     public id : string = '';
     public matches: string [] = [];
-    
+    public infoSumms : any [] = [];
+    public infoChamps : any [] = [];
+    public infoSumms2 : any [] = [];
+    public infoChamps2 : any [] = [];
 
     buscarInvocador ( query: string ){
         query = query.trim().toLocaleLowerCase();
@@ -43,7 +46,7 @@ export class RGService {
                 let arrMatches : string []= [];
                 datos.forEach((dato: string) => {
                     arrMatches.push(dato);
-                    this.infoPartidas(dato);
+                    // this.infoPartidas(dato);
                 });
                 this.matches = arrMatches;
             })
@@ -66,6 +69,10 @@ export class RGService {
             fetch (`https://americas.api.riotgames.com/lol/match/v5/matches/${matchID}?api_key=${this.apiKey}`)
             .then(resp => {
                 resp.json().then(datos => {
+                    this.infoSumms = [];
+                    this.infoSumms2 = [];
+                    this.infoChamps = [];
+                    this.infoChamps2 = [];
                     const team1: any [] = [];
                     const team1Champs: any [] = [];
                     const team2: any [] = [];
@@ -81,10 +88,10 @@ export class RGService {
                         }
                         
                     }
-                    console.log(team1);
-                    console.log(team1Champs)
-                    console.log(team2);
-                    console.log(team2Champs);
+                    this.infoSumms.push(team1);
+                    this.infoSumms2.push(team2);
+                    this.infoChamps.push(team1Champs);
+                    this.infoChamps2.push(team2Champs);  
                 })
         })
     }

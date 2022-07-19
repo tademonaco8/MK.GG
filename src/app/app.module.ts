@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { IndexComponente } from 'src/index/index.component';
+import { matchComponente } from '../match/match.component';
 
 @NgModule({
   declarations: [
     IndexComponente,
-    AppComponent
+    AppComponent,
+    matchComponente
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,21 @@
+<hr>
+<h2>match</h2>
+<hr>
+<!-- 
+    quiero buscar los summoners dentro de un array y despues recorrerlo
+    o quiero buscar el objeto de la partida y recorrerlo dentro del for
+
+ -->
+<div>
+    <h3>Team 1</h3>
+    <ul *ngFor="let champ of champs1; let i = index">
+        <li>{{summs1[i]}}-{{champ}}</li>
+    </ul>
+
+
+    <h3>Team 2</h3>
+    <ul *ngFor="let champ2 of champs2; let i = index">
+        <li>{{summs2[i]}}-{{champ2}}</li>
+    </ul>
+    <button (click)="mostrarInfo()">Expandir</button>
+</div>

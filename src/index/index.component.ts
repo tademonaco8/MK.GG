@@ -63,15 +63,38 @@ export class IndexComponente {
         console.log(this.busqueda);
         this.busqueda.fav = event.target[2].checked;
         this.agregarInvocadorFav();
-        let data = this.RGService.buscarInvocador(this.busqueda.nombreInv);
-        let invName = data;
-        console.log(invName, 'Hola');
+        this.RGService.buscarInvocador(this.busqueda.nombreInv);
         this.busqueda = {
             nombreInv : '',
             region : '',
             fav : false
         };
+    }
 
+    infoPartidas(matchId :string){
+        this.RGService.infoPartidas(matchId);
+        console.log(this.RGService.infoChamps);
+        console.log(this.RGService.infoSumms);
+        return this.RGService.infoChamps;
+    }
+
+    get champs() {
+        return [this.RGService.infoChamps]
+    }
+
+    get summs() {
+        return [this.RGService.infoSumms]
+    }
+    get champs2() {
+        return [this.RGService.infoChamps2]
+    }
+
+    get summs2() {
+        return [this.RGService.infoSumms2]
+    }
+
+    get infoPartida() {
+        return [this.RGService.infoChamps]
     }
 
     get nombreInv() {
@@ -93,10 +116,10 @@ export class IndexComponente {
             region : fav.region,
             fav : false
         }
+        this.RGService.buscarInvocador(this.busqueda.nombreInv);
     }
 
     agregarInvocadorFav() {
-        const messageSpot = document.querySelector('#messages');
         for (let i = 0; i < this.favoritos.length; i++) {
             const nombreFav = this.favoritos[i].nombreInv;
             if((nombreFav === this.busqueda.nombreInv)&&(this.favoritos[i].region===this.busqueda.region)&&(this.busqueda.fav == true)){
