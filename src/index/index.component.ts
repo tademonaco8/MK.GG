@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { RGService } from './services/rg.service';
+import { matchComponente } from '../match/match.component';
 interface Busqueda {
     nombreInv: string,
     region: string,
@@ -31,8 +32,8 @@ interface Partidas {
 export class IndexComponente {
     
     constructor( private RGService : RGService) {
-
     }
+
     title = 'MONAK.GG';
     favoritos: Favs[] = [
         {
@@ -76,6 +77,7 @@ export class IndexComponente {
         console.log(this.RGService.infoChamps);
         console.log(this.RGService.infoSumms);
         return this.RGService.infoChamps;
+        
     }
 
     get champs() {

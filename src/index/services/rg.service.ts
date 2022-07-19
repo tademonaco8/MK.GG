@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { IndexComponente } from '../index.component';
+import { matchComponente } from '../../match/match.component';
 
 @Injectable ({
     providedIn : 'root'
@@ -23,6 +23,9 @@ export class RGService {
     public infoChamps : any [] = [];
     public infoSumms2 : any [] = [];
     public infoChamps2 : any [] = [];
+    public gameMode : string = '';
+    public wint1 : boolean = false;
+    public wint2 : boolean = false;
 
     buscarInvocador ( query: string ){
         query = query.trim().toLocaleLowerCase();
@@ -46,7 +49,6 @@ export class RGService {
                 let arrMatches : string []= [];
                 datos.forEach((dato: string) => {
                     arrMatches.push(dato);
-                    // this.infoPartidas(dato);
                 });
                 this.matches = arrMatches;
             })
@@ -78,20 +80,22 @@ export class RGService {
                     const team2: any [] = [];
                     const team2Champs: any [] = [];   
                     for (let i = 0; i < 10; i++) {
-                        // console.log(datos.info.participants[i]);
                         if (datos.info.participants[i].teamId === 100){
                             team1.push(datos.info.participants[i].summonerName);
                             team1Champs.push(datos.info.participants[i].championName);
+                            this.gameMode = datos.info.gameMode;
+                            this.wint1 = datos.info.teams[0].win;
+                            this.wint2 = datos.info.teams[1].win;
                         } else if (datos.info.participants[i].teamId === 200){
                             team2.push(datos.info.participants[i].summonerName);
                             team2Champs.push(datos.info.participants[i].championName);
                         }
-                        
                     }
+                    console.log(datos.info.gameDuration/60);
                     this.infoSumms.push(team1);
                     this.infoSumms2.push(team2);
                     this.infoChamps.push(team1Champs);
-                    this.infoChamps2.push(team2Champs);  
+                    this.infoChamps2.push(team2Champs); 
                 })
         })
     }

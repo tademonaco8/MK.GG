@@ -7,13 +7,14 @@
 
  -->
 <div>
-    <h3>Team 1</h3>
+    <h3>{{gameMode}}</h3>
+    <h3>Team 1<span *ngIf="wint1"> - Win</span></h3>
     <ul *ngFor="let champ of champs1; let i = index">
         <li>{{summs1[i]}}-{{champ}}</li>
     </ul>
 
 
-    <h3>Team 2</h3>
+    <h3>Team 2<span *ngIf="wint2"> - Win</span></h3>
     <ul *ngFor="let champ2 of champs2; let i = index">
         <li>{{summs2[i]}}-{{champ2}}</li>
     </ul>
