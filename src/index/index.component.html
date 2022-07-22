@@ -1,10 +1,12 @@
-<h1>MONAK.GG</h1>
-<hr>
+<header>
+    <h1>MONAK.GG</h1>
+    <hr>
+</header>
 
 <div class="busqueda">
     <form (ngSubmit)="buscarInv($event)">
-        <p>Ingrese su nombre de invocador</p>
-        <input type="text" placeholder="Nombre" [(ngModel)]="busqueda.nombreInv" name="nombreInv">
+        <p>Insert your summoner name and choose the region</p>
+        <input type="text" placeholder="Summoner name" [(ngModel)]="busqueda.nombreInv" name="nombreInv">
         <select name="region" [(ngModel)]="busqueda.region">
             <option value="la1">LAN</option>
             <option value="la2">LAS</option>
@@ -15,46 +17,23 @@
         <label> Save<input type="checkbox" [value]="busqueda.fav"></label>
         <input type="submit">
     </form>
-    <span id="messages"></span>
 </div>
-<div id="InvFav">
-    <h2>Invocadores favoritos</h2>
+<aside id="Partidas">
+    <h2>Profile: </h2>
+    <h3>{{nombreInv}}</h3>
+    <h4>Last 20 games:</h4>
+    <ul *ngFor="let match of partidasHistorial; let i = index">
+        <li>{{i+1}}-{{match}}-{{SummChamp}}</li>
+        <button (click)="infoPartidas(match)" value="{{match}}">Match information</button>
+    </ul>
+    <hr>
+</aside>
+<aside id="InvFav">
+    <h2>Favourites summoners</h2>
     <hr>
     <ul *ngFor="let fav of favoritos">
         <li>{{fav.nombreInv}}-{{fav.region.toUpperCase()}}</li>
-        <button (click)="copiarDatos(fav)">Seleccionar</button>
+        <button (click)="copiarDatos(fav)">Select</button>
     </ul>
     <hr>
-</div>
-<div id="Partidas">
-    <h2>Perfil</h2>
-    <h3>{{nombreInv}}</h3>
-    <h4>Partidas:</h4>
-    <ul *ngFor="let match of partidasHistorial">
-        <li>{{match}}</li>
-        <button (click)="infoPartidas(match)" value="{{match}}">Ver mas</button>
-    </ul>
-    <hr>
-</div>
-<!-- <div>
-    <hr>
-    <h2>match</h2>
-    <hr>
-    
-    quiero buscar los summoners dentro de un array y despues recorrerlo
-    o quiero buscar el objeto de la partida y recorrerlo dentro del for
-
-
-    quiero mostrar champ-summ
-
-    <h3>Team 1</h3>
-    <ul *ngFor="let champ of champs; let i = index">
-        <li *ngFor="let summoner of summs; let j = index">{{summoner}}//{{champ[i]}}</li>
-    </ul>
-
-    <hr>
-    <h3>Team 2</h3>
-    <ul *ngFor="let summoner2 of summs2; let i = index">
-        <li>{{summoner2}}-{{champs2[i]}}</li>
-    </ul>
-</div> -->
+</aside>

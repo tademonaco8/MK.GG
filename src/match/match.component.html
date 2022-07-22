@@ -1,22 +1,38 @@
-<hr>
-<h2>match</h2>
-<hr>
-<!-- 
-    quiero buscar los summoners dentro de un array y despues recorrerlo
-    o quiero buscar el objeto de la partida y recorrerlo dentro del for
+<div id="ppalMatch">
 
- -->
-<div>
-    <h3>{{gameMode}}</h3>
-    <h3>Team 1<span *ngIf="wint1"> - Win</span></h3>
-    <ul *ngFor="let champ of champs1; let i = index">
-        <li>{{summs1[i]}}-{{champ}}</li>
-    </ul>
+    <h2>Match</h2>
+    <button (click)="mostrarInfo()">Expand</button>
+    <hr>
+    <h3>{{partidaInformacion.gameMode}}</h3>
+    <h3>Team 1<span *ngIf="team1.win"> - Win</span></h3>
+    <table>
+        <thead>
+            <th>Summoner</th>
+            <th>Champion</th>
+            <th>Kills/Deaths/Assists</th>
+            <th>KDA</th>
+        </thead>
+        <tr *ngFor="let champ of team1.champs; let i = index">
+            <td>{{team1.summs[i]}}</td>
+            <td>{{team1.champs[i]}}</td>
+            <td>{{team1.kills[i]}}/{{team1.deaths[i]}}/{{team1.assists[i]}}</td>
+            <!-- <td>{{kdat1[i]}}</td> -->
+        </tr>
+    </table>
 
-
-    <h3>Team 2<span *ngIf="wint2"> - Win</span></h3>
-    <ul *ngFor="let champ2 of champs2; let i = index">
-        <li>{{summs2[i]}}-{{champ2}}</li>
-    </ul>
-    <button (click)="mostrarInfo()">Expandir</button>
+    <h3>Team 2<span *ngIf="team2.win"> - Win</span></h3>
+    <table>
+        <thead>
+            <th>Summoner</th>
+            <th>Champion</th>
+            <th>Kills/Deaths/Assists</th>
+            <th>KDA</th>
+        </thead>
+        <tr *ngFor="let champ of team2.champs; let i = index">
+            <td>{{team2.summs[i]}}</td>
+            <td>{{team2.champs[i]}}</td>
+            <td>{{team2.kills[i]}}/{{team2.deaths[i]}}/{{team2.assists[i]}}</td>
+            <!-- <td step="0,00">{{kdat2[i]}}</td> -->
+        </tr>
+    </table>
 </div>

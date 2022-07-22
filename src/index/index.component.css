@@ -17,3 +17,21 @@ h1 {
 .busqueda input {
     margin: 5px;
 }
+
+#Partidas {
+    width: 25%;
+    padding-left: 15px;
+    margin-left: 15px;
+    float: left;
+    font-style: italic;
+    background-color: lightgray;
+}
+
+#InvFav {
+    width: 70%;
+    padding-left: 15px;
+    margin-left: 15px;
+    float: right;
+    font-style: italic;
+    background-color: lightgray;
+}

@@ -1,0 +1,28 @@
+table,
+thead,
+th,
+tr,
+td {
+    border: 1px;
+    border-color: black;
+    padding: 5px;
+    margin: 5px;
+    justify-content: space-between;
+    text-align: center;
+}
+
+th {
+    font-weight: bold;
+}
+
+#ppalMatch {
+    color: black;
+    margin-top: 5px;
+    width: 70%;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    margin-left: 15px;
+    display: block;
+    float: right;
+    background-color: lightslategrey;
+}
