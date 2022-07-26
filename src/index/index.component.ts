@@ -13,7 +13,7 @@ interface Summoner {
     profileIcon: number,
     champion: string
 }
-interface Favs {
+export interface Favs {
     nombreInv: string;
     region: string;
 }
@@ -34,11 +34,8 @@ export class IndexComponente {
     }
 
     title = 'MONAK.GG';
-    favoritos: Favs[] = [
-        {
-            nombreInv: 'TMonak',
-            region: 'la2'
-        }
+    public favoritos: Favs[] = [
+        
     ];
     partidas: Partidas[] = [];
     busqueda: Busqueda = {
@@ -110,6 +107,10 @@ export class IndexComponente {
         return [this.RGService.SummName]
     }
 
+    get summFav() {
+        return this.RGService.favouriteSummoners;
+    }
+
     get partidasHistorial() {
         return [...this.RGService.matches]
     }
@@ -118,7 +119,7 @@ export class IndexComponente {
         let checked = event.target.checked;
         this.busqueda.fav = checked;
     }
-
+    
     agregarInvocadorFav() {
         for (let i = 0; i < this.favoritos.length; i++) {
             const nombreFav = this.favoritos[i].nombreInv;
@@ -135,13 +136,15 @@ export class IndexComponente {
 
         if (this.busqueda.fav === true) {
             this.favoritos.push(this.busqueda);
+                localStorage.setItem('favouriteSummoners', JSON.stringify(this.favoritos))
+            }
             this.busqueda = {
                 nombreInv: this.busqueda.nombreInv,
                 region: '',
                 fav: false
             }
-            console.log(this.favoritos);
+             this.favoritos = this.RGService.favouriteSummoners;
         }
     }
-}
+
 

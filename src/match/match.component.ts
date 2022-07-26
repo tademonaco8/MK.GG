@@ -19,13 +19,7 @@ interface Team {
     deaths : number [],
     assists : number []
 }
-interface Summoner {
-    name : string,
-    champ?: string,
-    kills?: number,
-    deaths?: number,
-    assists?: number,
-}
+
 @Component({
     templateUrl: './match.component.html',
     styleUrls: ['./match.component.css'],
@@ -61,7 +55,7 @@ export class matchComponente {
         assists : []
     }
 
-    public vaciarObj() {
+    public vaciarTeams() {
         this.team1.summs = [];
         this.team1.champs = [];
         this.team1.team = 0;
@@ -79,7 +73,7 @@ export class matchComponente {
     }
 
     public mostrarInfo(): void{        
-        this.vaciarObj();
+        this.vaciarTeams();
         for (let i = 0; i < 5; i++) {
             const champ1 = this.RGService.infoChamps[0];
             const champ2 = this.RGService.infoChamps2[0];

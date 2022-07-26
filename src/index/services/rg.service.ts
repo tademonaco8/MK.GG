@@ -1,13 +1,20 @@
 import { Injectable } from "@angular/core";
+import {HttpClient} from '@angular/common/http';
+import { IndexComponente, Favs } from '../index.component';
+
 @Injectable({
     providedIn: 'root'
 })
 
-
 export class RGService {
-
-
-    private apiKey: string = 'RGAPI-fd4c72e5-8bfe-4ab1-9081-d5bb9a1c9faa';
+    constructor( private http : HttpClient) {
+        if(localStorage.getItem('favouriteSummoners')){
+            this.favouriteSummoners = JSON.parse(localStorage.getItem('favouriteSummoners')!)
+            console.log(this.favouriteSummoners)
+        }
+    }
+    
+    private apiKey: string = 'RGAPI-cad95bfb-c3a6-4e00-b2a7-2863da42e2a3';
     private _busquedas: string[] = [];
 
     get busquedas() {
@@ -15,6 +22,10 @@ export class RGService {
     }
     //summonerDTO
     public puuid: string = '';
+    public favouriteSummoners : Favs[]= [{
+        nombreInv : '',
+        region : ''
+    }];
     public gameLength: number = 0;
     public level: number = 0;
     public SummName: string = '';
@@ -70,6 +81,10 @@ export class RGService {
         this.infoSumms2 = [];
         this.infoChamps = [];
         this.infoChamps2 = [];
+        this.favouriteSummoners = [{
+            nombreInv : '',
+            region : ''
+        }];
         this.SummChamp = '';
         this.kt1 = [];
         this.kt2 = [];

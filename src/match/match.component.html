@@ -1,5 +1,4 @@
 <div id="ppalMatch">
-
     <h2>Match</h2>
     <button (click)="mostrarInfo()">Expand</button>
     <hr>
@@ -27,6 +26,7 @@
             <th>Champion</th>
             <th>Kills/Deaths/Assists</th>
             <th>KDA</th>
+            <th>CS</th>
         </thead>
         <tr *ngFor="let champ of team2.champs; let i = index">
             <td>{{team2.summs[i]}}</td>
